@@ -1,16 +1,27 @@
 import React from 'react';
 import { graphql, StaticQuery, Link } from 'gatsby'
+import styled from 'styled-components'
+
+const MainMenuWrapper = styled.div`
+  display: flex;
+  background-color: #00BFFF;
+`
+
+const MenuItem = styled(Link)`
+  color: #BA55D3;
+  display: block;
+  padding: 8px 16px;
+`
 
 const MainMenu = () => {
   const handleMenuRender = props =>
-    <div>
+    <MainMenuWrapper>
       {props.allWordpressWpApiMenusMenusItems.edges[0].node.items.map(item =>
-        <Link to={item.object_slug} key={item.title}>
+        <MenuItem to={item.object_slug} key={item.title}>
           {item.title}
-        </Link>
+        </MenuItem>
       )}
-    </div>
-
+    </MainMenuWrapper>
 
   return (
     <StaticQuery
