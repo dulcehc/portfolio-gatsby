@@ -15,19 +15,23 @@ const MainMenu = () => {
   return (
     <StaticQuery
       query={graphql`
-        {
-          allWordpressWpApiMenusMenusItems {
-            edges {
-              node {
-                items {
-                  title
-                  object_slug
-                }
+      {
+        allWordpressWpApiMenusMenusItems(filter: {
+          name: {
+            eq: "Main Menu"
+          }
+        }) {
+          edges {
+            node {
+              name
+              items {
+                title
+                object_slug
               }
             }
           }
         }
-      `}
+      }`}
       render={handleMenuRender}
     />
   );
