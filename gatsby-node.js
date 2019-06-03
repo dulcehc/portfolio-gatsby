@@ -62,6 +62,15 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allWordpressWpLogo {
+        edges {
+          node {
+            url {
+              source_url
+            }
+          }
+        }
+      }
     }
   `)
 
@@ -71,7 +80,12 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   // Access query results via object destructuring
-  const { allWordpressPage, allWordpressPost, allWordpressWpPortfolio } = result.data
+  const {
+    allWordpressPage,
+    allWordpressPost,
+    allWordpressWpPortfolio,
+    allWordpressWpLogo
+  } = result.data
 
   // Create Page pages.
   const pageTemplate = path.resolve(`./src/templates/page.js`)
