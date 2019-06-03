@@ -62,15 +62,6 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-      allWordpressWpLogo {
-        edges {
-          node {
-            url {
-              source_url
-            }
-          }
-        }
-      }
     }
   `)
 
@@ -83,8 +74,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const {
     allWordpressPage,
     allWordpressPost,
-    allWordpressWpPortfolio,
-    allWordpressWpLogo
+    allWordpressWpPortfolio
   } = result.data
 
   // Create Page pages.
