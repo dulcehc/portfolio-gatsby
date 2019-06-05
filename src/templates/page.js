@@ -1,5 +1,5 @@
 import React from 'react'
-import Layout from '../components/layout'
+import Layout from 'components/layout'
 
 const Page = ({ pageContext }) => {
   const { title, content } = pageContext

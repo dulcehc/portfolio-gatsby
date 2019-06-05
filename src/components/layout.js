@@ -1,9 +1,9 @@
-import React from "react"
+import React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
 import styled, {createGlobalStyle} from 'styled-components'
-import Helmet from "react-helmet"
+import Helmet from 'react-helmet'
 
-import MainMenu from './MainMenu'
+import MainMenu from 'components/MainMenu'
 
 const GlobalStyles = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');

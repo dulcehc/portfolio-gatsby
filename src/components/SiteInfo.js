@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
 import styled from 'styled-components'
 
-import Logo from './logo'
+import Logo from 'components/logo'
 
 const SiteInfoWrapper = styled.div`
   flex-grow: 1;

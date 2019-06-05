@@ -7,6 +7,17 @@
 const path = require(`path`)
 const slash = require(`slash`)
 
+/**
+ * Absolute imports https://www.gatsbyjs.org/docs/add-custom-webpack-config/
+ */
+exports.onCreateWebpackConfig = ({ stage, actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      modules: [path.resolve(__dirname, "src"), "node_modules"],
+    },
+  })
+}
+
 // Implement the Gatsby API “createPages”. This is
 // called after the Gatsby bootstrap is finished so you have
 // access to any information necessary to programmatically
