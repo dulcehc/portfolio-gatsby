@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql, StaticQuery } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import styled from 'styled-components'
 
 import Logo from 'components/logo'
@@ -20,8 +20,8 @@ const ContainerInfo = styled.div`
   padding-left: 10px;
 `
 
-const SiteInfo = () => (
-  <StaticQuery query={graphql`
+const SiteInfo = () => {
+  const data = useStaticQuery(graphql`
     {
       allWordpressSiteMetadata{
         edges {
@@ -32,21 +32,22 @@ const SiteInfo = () => (
         }
       }
     }
-  `} render={props => (
+  `)
+  return (
     <SiteInfoWrapper>
       <Logo />
 
       <ContainerInfo>
         <SiteTitle>
-          {props.allWordpressSiteMetadata.edges[0].node.name}
+          {data.allWordpressSiteMetadata.edges[0].node.name}
         </SiteTitle>
         <div>
-          {props.allWordpressSiteMetadata.edges[0].node.description}
+          {data.allWordpressSiteMetadata.edges[0].node.description}
         </div>
       </ContainerInfo>
 
     </SiteInfoWrapper>
-  )} />
-)
+  )
+}
 
 export default SiteInfo
