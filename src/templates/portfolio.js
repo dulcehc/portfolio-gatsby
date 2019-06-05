@@ -15,7 +15,7 @@ export default ({ pageContext }) => (
     <strong>
       Website url:
     </strong>
-    <a href={pageContext.acf.portfolio_url} target="_blank">
+    <a href={pageContext.acf.portfolio_url} target="_blank" rel="noopener noreferrer">
       {pageContext.acf.portfolio_url}
     </a>
     <FeaturedImage src={pageContext.featured_media.source_url} />
