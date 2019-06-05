@@ -9,7 +9,7 @@ const SiteInfoWrapper = styled.div`
   color: white;
   margin: auto 0;
   display: flex;
-  padding: 10px;
+  padding: 10px 0;
 `
 
 const SiteTitle = styled.div`
