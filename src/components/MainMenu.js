@@ -6,21 +6,23 @@ import SiteInfo from 'components/SiteInfo'
 
 const MainMenuWrapper = styled.div`
   display: flex;
-  background-color: #00BFFF;
+  background-color: #C71585;
 `
 
 const MainMenuInner = styled.div`
   max-width: 960px;
   margin: 0 auto;
   display: flex;
+  align-items: center;
   width: 960px;
   height: 100%;
 `
 
 const MenuItem = styled(Link)`
-  color: #BA55D3;
+  color: #FFFFFF;
   display: block;
   padding: 8px 16px;
+  text-decoration: none;
 `
 
 const MainMenu = () => {

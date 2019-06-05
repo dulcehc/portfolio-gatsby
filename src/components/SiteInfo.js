@@ -8,10 +8,16 @@ const SiteInfoWrapper = styled.div`
   flex-grow: 1;
   color: white;
   margin: auto 0;
+  display: flex;
+  padding: 10px;
 `
 
 const SiteTitle = styled.div`
   font-weight: bold;
+`
+
+const ContainerInfo = styled.div`
+  padding-left: 10px;
 `
 
 const SiteInfo = () => (
@@ -29,12 +35,16 @@ const SiteInfo = () => (
   `} render={props => (
     <SiteInfoWrapper>
       <Logo />
-      <SiteTitle>
-        {props.allWordpressSiteMetadata.edges[0].node.name}
-      </SiteTitle>
-      <div>
-        {props.allWordpressSiteMetadata.edges[0].node.description}
-      </div>
+
+      <ContainerInfo>
+        <SiteTitle>
+          {props.allWordpressSiteMetadata.edges[0].node.name}
+        </SiteTitle>
+        <div>
+          {props.allWordpressSiteMetadata.edges[0].node.description}
+        </div>
+      </ContainerInfo>
+
     </SiteInfoWrapper>
   )} />
 )
