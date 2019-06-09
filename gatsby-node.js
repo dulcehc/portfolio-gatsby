@@ -49,13 +49,12 @@ exports.createPages = async ({ graphql, actions }) => {
       allWordpressPost {
         edges {
           node {
-            id
-            path
-            status
-            template
-            format
+            excerpt
+            wordpress_id
+            date(formatString: "Do MM YYYY HH:mm")
             title
             content
+            slug
           }
         }
       }
@@ -113,19 +112,6 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  const postTemplate = path.resolve(`./src/templates/post.js`)
-  // We want to create a detailed page for each post node.
-  // The path field stems from the original WordPress link
-  // and we use it for the slug to preserve url structure.
-  // The Post ID is prefixed with 'POST_'
-  allWordpressPost.edges.forEach(edge => {
-    createPage({
-      path: edge.node.path,
-      component: slash(postTemplate),
-      context: edge.node
-    })
-  })
-
   const portfolioTemplate = path.resolve(`./src/templates/portfolio.js`)
   // We want to create a detailed page for each post node.
   // The path field stems from the original WordPress link
@@ -138,4 +124,30 @@ exports.createPages = async ({ graphql, actions }) => {
       context: edge.node
     })
   })
+
+  const posts = allWordpressPost.edges
+  const postsPerPage = 2
+  const numberOfPages = Math.ceil(posts.length / postsPerPage)
+  const blogPostListTemplate = path.resolve(`./src/templates/blogPostList.js`)
+
+  Array.from({length: numberOfPages}).forEach((page, index) => {
+    createPage({
+      component: slash(blogPostListTemplate),
+      path: index === 0 ? '/blog' : `/blog/${index + 1}`,
+      context: {
+        posts: posts.slice(index * postsPerPage, (index * postsPerPage) + postsPerPage),
+        numberOfPages,
+        currentPage: index + 1
+      }
+    })
+  })
+
+  posts.forEach(post => {
+    createPage({
+      path: `/post/${post.node.slug}`,
+      component: slash(pageTemplate),
+      context: post.node
+    })
+  })
+
 }
